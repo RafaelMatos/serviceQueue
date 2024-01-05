@@ -1,5 +1,5 @@
 import { AccessButton, Container } from './styles'
-import { Gear, User  } from '@phosphor-icons/react'
+import { Gear, User } from '@phosphor-icons/react'
 import { useRouter } from 'next/router'
 
 export const AccessButtons = () => {
