@@ -70,7 +70,7 @@ export const AppointmentRegister = ({
     // <Container>
     //   <Heading size="md">Registro da consulta</Heading>
     <FormContainer>
-      <Heading size="sm">Agendar consulta para paciente</Heading>
+      <Heading size="sm">Confirmar consulta para paciente</Heading>
       <PatientInfo>
         <PatientInfoItem>
           <Text>Nome:</Text>
@@ -92,7 +92,7 @@ export const AppointmentRegister = ({
         </PatientInfoItem>
       </PatientInfo>
       <ActionButtons>
-        <Button type="submit">Agendar</Button>
+        <Button type="submit">Confirmar</Button>
         <Button onClick={cancelAppontimentRegister}>Cancelar</Button>
         {registerErro && (
           <Text size="sm" color="error">

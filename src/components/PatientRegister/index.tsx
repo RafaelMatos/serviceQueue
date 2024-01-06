@@ -66,7 +66,7 @@ export const PatientRegister = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitted },
+    formState: { errors, isSubmitted, isSubmitting },
   } = useForm<PatientRegisterFormData>({
     resolver: zodResolver(patientRegisterSchema),
   })
@@ -99,6 +99,13 @@ export const PatientRegister = () => {
       setRegisterErro('Erro ao cadastrar paciente')
       console.log(err)
     }
+    reset()
+  }
+
+  const handleClearForm = () => {
+    setRegisterErro(null)
+    setRegisterSuccess(null)
+    setPatientRegistered(null)
     reset()
   }
 
@@ -175,15 +182,12 @@ export const PatientRegister = () => {
           </FormItem>
           <ActionButtons>
             <Button type="submit">Salvar</Button>
-            <Button
-              onClick={() => {
-                setRegisterErro(null)
-                setRegisterSuccess(null)
-                reset()
-              }}
-            >
-              Limpar
-            </Button>
+            <Button onClick={handleClearForm}>Limpar</Button>
+            {isSubmitting && (
+              <Text size="sm" color="gray-400">
+                Salvando...
+              </Text>
+            )}
             {registerErro && (
               <Text size="sm" color="error">
                 {registerErro}
