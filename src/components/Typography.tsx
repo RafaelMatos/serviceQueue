@@ -31,7 +31,7 @@ export const Text = styled('p', {
         color: '$red100',
       },
       success: {
-        color: '$orange100',
+        color: '#50B2C0',
       },
     },
   },

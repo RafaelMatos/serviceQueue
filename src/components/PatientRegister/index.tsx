@@ -8,12 +8,20 @@ import {
   FormItem,
   Select,
 } from './styles'
-import { string, z } from 'zod'
+import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Heading, Text } from '../Typography'
 import { TextInput } from '../Form/InputText'
 import { InputRadio } from '../Form/InputRadio'
 import { api } from '@/lib/axios'
+import { AppointmentRegister } from '../AppointmentRegister'
+
+export type PatientRegistered = {
+  id: string
+  name: string
+  age: number
+  isPcd: boolean
+}
 
 const patientRegisterSchema = z.object({
   name: z
@@ -62,9 +70,9 @@ export const PatientRegister = () => {
   } = useForm<PatientRegisterFormData>({
     resolver: zodResolver(patientRegisterSchema),
   })
-  const [output, setOutput] = useState('')
   const [pcd, setPcd] = useState(false)
-  const [userId, setUserId] = useState('')
+  const [patientRegistered, setPatientRegistered] =
+    useState<PatientRegistered | null>(null)
   const [registerErro, setRegisterErro] = useState<string | null>(null)
   const [registerSuccess, setRegisterSuccess] = useState<string | null>(null)
 
@@ -80,14 +88,17 @@ export const PatientRegister = () => {
         cpf,
       })
       const patient = response.data.patient
-      setUserId(patient.id)
+      setPatientRegistered({
+        id: patient.id,
+        name: patient.name,
+        age: patient.age,
+        isPcd: patient.pcd,
+      })
       setRegisterSuccess('Paciente cadastrado!')
     } catch (err) {
       setRegisterErro('Erro ao cadastrar paciente')
       console.log(err)
     }
-
-    setOutput(JSON.stringify(data, null, 2))
     reset()
   }
 
@@ -186,7 +197,13 @@ export const PatientRegister = () => {
           </ActionButtons>
         </form>
       </FormContainer>
-      <pre>{output}</pre>
+
+      {patientRegistered && (
+        <AppointmentRegister
+          patient={patientRegistered}
+          cancelAppontimentRegister={() => setPatientRegistered(null)}
+        />
+      )}
     </Container>
   )
 }

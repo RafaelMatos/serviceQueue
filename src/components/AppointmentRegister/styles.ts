@@ -91,3 +91,15 @@ export const Select = styled('select', {
     background: '$gray800',
   },
 })
+
+export const PatientInfo = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$2',
+  padding: '$2',
+})
+export const PatientInfoItem = styled('div', {
+  display: 'flex',
+  gap: '$2',
+  // padding: '$2',
+})
