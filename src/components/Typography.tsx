@@ -27,6 +27,12 @@ export const Text = styled('p', {
       'gray-400': {
         color: '$gray400',
       },
+      error: {
+        color: '$red100',
+      },
+      success: {
+        color: '$orange100',
+      },
     },
   },
 

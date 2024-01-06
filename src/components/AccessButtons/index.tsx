@@ -8,11 +8,11 @@ export const AccessButtons = () => {
     <Container>
       <AccessButton>
         <User size={30} />
-        Entrar com Paciente
+        Entrar como Paciente
       </AccessButton>
       <AccessButton onClick={() => router.push('/service')}>
         <Gear size={30} />
-        Entrar com Funcionário
+        Entrar como Funcionário
       </AccessButton>
     </Container>
   )

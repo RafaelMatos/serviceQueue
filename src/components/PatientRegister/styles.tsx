@@ -44,6 +44,7 @@ export const FormItem = styled('div', {
 })
 export const ActionButtons = styled('div', {
   display: 'flex',
+  alignItems: 'center',
   gap: '$2',
 })
 
