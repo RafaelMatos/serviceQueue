@@ -9,13 +9,36 @@ datasource db {
 }
 
 model Patient {
-  id         String   @id @default(uuid())
-  name       String
-  age        Int
-  gender     Int
-  pcd        Boolean
-  cpf        String
-  created_at DateTime @default(now())
+  id          String        @id @default(uuid())
+  name        String
+  age         Int
+  gender      Int
+  pcd         Boolean
+  cpf         String
+  created_at  DateTime      @default(now())
+  Appointment Appointment[]
 
   @@map("patients")
+}
+
+model Appointment {
+  id                 String   @id @default(uuid())
+  patient_id         String
+  isPriority         Boolean
+  status_appointment Int
+  created_at         DateTime @default(now())
+
+  patient Patient           @relation(fields: [patient_id], references: [id])
+  status  AppointmentStatus @relation(fields: [status_appointment], references: [type])
+
+  @@index([status_appointment])
+  @@index([patient_id])
+}
+
+model AppointmentStatus {
+  type         Int           @id @unique
+  description  String
+  appointments Appointment[]
+
+  @@map("appointment_status")
 }
