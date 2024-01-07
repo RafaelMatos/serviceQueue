@@ -22,7 +22,11 @@ export const AccessButton = styled('button', {
   justifyContent: 'center',
   gap: '$5',
   transition: '0.2s ease-in-out',
-  '&:hover': {
+  '&:disabled': {
+    opacity: 0.5,
+    cursor: 'not-allowed',
+  },
+  '&:not(:disabled):hover': {
     background: '$orange200',
     svg: {
       scale: '1.1',

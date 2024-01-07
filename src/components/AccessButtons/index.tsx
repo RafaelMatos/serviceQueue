@@ -6,7 +6,7 @@ export const AccessButtons = () => {
   const router = useRouter()
   return (
     <Container>
-      <AccessButton>
+      <AccessButton disabled>
         <User size={30} />
         Entrar como Paciente
       </AccessButton>
