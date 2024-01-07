@@ -1,5 +1,6 @@
 import { ComponentProps, ElementRef, ReactNode, forwardRef } from 'react'
 import { Container, Input, InputRadioContainer } from './styles'
+import { Text } from '@/components/Typography'
 
 export interface InputRadioProps extends ComponentProps<typeof Input> {
   icon?: ReactNode
@@ -14,7 +15,11 @@ export const InputRadio = forwardRef<ElementRef<typeof Input>, InputRadioProps>(
           <Input type="radio" ref={ref} {...props} />
           {icon}
         </InputRadioContainer>
-        {text}
+        {text && (
+          <Text size="sm" color="gray-400">
+            {text}
+          </Text>
+        )}
       </Container>
     )
   },

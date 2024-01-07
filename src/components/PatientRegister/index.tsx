@@ -78,6 +78,8 @@ export const PatientRegister = () => {
 
   const onSubmit = async (data: PatientRegisterFormData) => {
     const { name, age, gender, pcd, cpf } = data
+    setRegisterErro(null)
+    setRegisterSuccess(null)
 
     try {
       const response = await api.post('/patients', {
@@ -170,7 +172,7 @@ export const PatientRegister = () => {
             <label>Paciente portador de deficiencia</label>
             <InputRadio
               {...register('pcd')}
-              text="Possui pcd"
+              text={pcd ? 'É pcd' : 'Não é pcd'}
               checked={pcd}
               onClick={() => setPcd(!pcd)}
             />
@@ -205,7 +207,7 @@ export const PatientRegister = () => {
       {patientRegistered && (
         <AppointmentRegister
           patient={patientRegistered}
-          cancelAppontimentRegister={() => setPatientRegistered(null)}
+          cancelAppointmentRegister={() => setPatientRegistered(null)}
         />
       )}
     </Container>

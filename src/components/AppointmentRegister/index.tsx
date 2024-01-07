@@ -1,74 +1,60 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
 import {
   ActionButtons,
   Button,
-  Container,
   FormContainer,
-  FormItem,
   PatientInfo,
   PatientInfoItem,
-  Select,
 } from './styles'
-import { string, z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 import { Heading, Text } from '../Typography'
 import { api } from '@/lib/axios'
 import { PatientRegistered } from '../PatientRegister'
 
 const appointmentRegisterSchema = z.object({})
 
-type AppointmentRegisterFormData = z.infer<typeof appointmentRegisterSchema>
-
-const genderArray = [
-  { label: 'Homem', value: 0 },
-  { label: 'Mulher', value: 1 },
-  { label: 'Prefere não identificar', value: 2 },
-]
+// type AppointmentRegisterFormData = z.infer<typeof appointmentRegisterSchema>
 
 type AppointmentRegisterProps = {
   patient: PatientRegistered
-  cancelAppontimentRegister: () => void
+  cancelAppointmentRegister: () => void
 }
 
 export const AppointmentRegister = ({
   patient,
-  cancelAppontimentRegister,
+  cancelAppointmentRegister,
 }: AppointmentRegisterProps) => {
   const { name, age, isPcd, id } = patient
   const isPriority = isPcd || age >= 60
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitted },
-  } = useForm<AppointmentRegisterFormData>({
-    resolver: zodResolver(appointmentRegisterSchema),
-  })
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   reset,
+  //   formState: { errors, isSubmitted },
+  // } = useForm<AppointmentRegisterFormData>({
+  //   resolver: zodResolver(appointmentRegisterSchema),
+  // })
   const [output, setOutput] = useState('')
   const [registerErro, setRegisterErro] = useState<string | null>(null)
   const [registerSuccess, setRegisterSuccess] = useState<string | null>(null)
 
-  const onSubmit = async (data: AppointmentRegisterFormData) => {
-    // const {} = data
-
+  const handleRegisterAppointment = async () => {
     try {
-      const response = await api.post('/appointment', {})
-      const appointment = response.data.appointment
-
+      const response = await api.post('/appointments', {
+        id,
+        isPriority,
+        statusAppointment: 0,
+      })
+      // const appointment = response.data.appointment
+      setOutput(JSON.stringify(response, null, 2))
       setRegisterSuccess('Consulta marcada!')
     } catch (err) {
       setRegisterErro('Erro ao cadastrar Consulta')
       console.log(err)
     }
-
-    setOutput(JSON.stringify(data, null, 2))
-    reset()
   }
 
   return (
-    // <Container>
-    //   <Heading size="md">Registro da consulta</Heading>
     <FormContainer>
       <Heading size="sm">Confirmar consulta para paciente</Heading>
       <PatientInfo>
@@ -92,8 +78,8 @@ export const AppointmentRegister = ({
         </PatientInfoItem>
       </PatientInfo>
       <ActionButtons>
-        <Button type="submit">Confirmar</Button>
-        <Button onClick={cancelAppontimentRegister}>Cancelar</Button>
+        <Button onClick={handleRegisterAppointment}>Confirmar</Button>
+        <Button onClick={cancelAppointmentRegister}>Cancelar</Button>
         {registerErro && (
           <Text size="sm" color="error">
             {registerErro}
@@ -105,7 +91,7 @@ export const AppointmentRegister = ({
           </Text>
         )}
       </ActionButtons>
+      {/* {output && <Text>{output}</Text>} */}
     </FormContainer>
-    // </Container>
   )
 }

@@ -28,17 +28,19 @@ model Appointment {
   status_appointment Int
   created_at         DateTime @default(now())
 
-  patient Patient           @relation(fields: [patient_id], references: [id])
-  status  AppointmentStatus @relation(fields: [status_appointment], references: [type])
+  patient           Patient           @relation(fields: [patient_id], references: [id])
+  statusAppointment AppointmentStatus @relation(fields: [status_appointment], references: [type])
 
-  @@index([status_appointment])
   @@index([patient_id])
+  @@index([status_appointment])
+  @@map("appointments")
 }
 
 model AppointmentStatus {
-  type         Int           @id @unique
-  description  String
-  appointments Appointment[]
+  type        Int           @id @unique
+  name        String
+  description String
+  Appointment Appointment[]
 
   @@map("appointment_status")
 }

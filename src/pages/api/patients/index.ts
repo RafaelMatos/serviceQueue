@@ -1,6 +1,6 @@
+import { prisma } from '@/lib/prisma'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { z } from 'zod'
-import { prisma } from '../../../lib/prisma'
 
 // type Data = {
 //   name: string
@@ -43,8 +43,6 @@ export default async function handler(
       }),
   })
 
-  console.log(req.body)
-
   const { name, age, gender, pcd, cpf } = bodySchema.parse(req.body)
 
   if (!cpf) {
@@ -65,7 +63,7 @@ export default async function handler(
     })
   }
 
-  const patient = await prisma?.patient.create({
+  const patient = await prisma.patient.create({
     data: {
       name,
       age,
