@@ -6,14 +6,10 @@ import {
   PatientInfo,
   PatientInfoItem,
 } from './styles'
-import { z } from 'zod'
 import { Heading, Text } from '../Typography'
 import { api } from '@/lib/axios'
 import { PatientRegistered } from '../PatientRegister'
-
-const appointmentRegisterSchema = z.object({})
-
-// type AppointmentRegisterFormData = z.infer<typeof appointmentRegisterSchema>
+import { useAppointment } from '@/hooks/useAppointment'
 
 type AppointmentRegisterProps = {
   patient: PatientRegistered
@@ -26,18 +22,10 @@ export const AppointmentRegister = ({
 }: AppointmentRegisterProps) => {
   const { name, age, isPcd, id } = patient
   const isPriority = isPcd || age >= 60
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   reset,
-  //   formState: { errors, isSubmitted },
-  // } = useForm<AppointmentRegisterFormData>({
-  //   resolver: zodResolver(appointmentRegisterSchema),
-  // })
   const [output, setOutput] = useState('')
   const [registerErro, setRegisterErro] = useState<string | null>(null)
   const [registerSuccess, setRegisterSuccess] = useState<string | null>(null)
-
+  const { addToAppointments } = useAppointment()
   const handleRegisterAppointment = async () => {
     try {
       const response = await api.post('/appointments', {
@@ -45,7 +33,16 @@ export const AppointmentRegister = ({
         isPriority,
         statusAppointment: 0,
       })
-      // const appointment = response.data.appointment
+      const appointment = response.data.appointment
+      if (appointment) {
+        addToAppointments({
+          id: appointment.id,
+          isPriority: appointment.isPriority,
+          created_at: appointment.created_at,
+          patient_id: appointment.patient_id,
+          status_appointment: appointment.status_appointment,
+        })
+      }
       setOutput(JSON.stringify(response, null, 2))
       setRegisterSuccess('Consulta marcada!')
     } catch (err) {

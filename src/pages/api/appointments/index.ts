@@ -21,7 +21,7 @@ export default async function handler(
 
   const { id, isPriority, statusAppointment } = bodySchema.parse(req.body)
 
-  const appointment = await prisma.appointment.create({
+  const appointments = await prisma.appointment.create({
     data: {
       patient_id: id,
       status_appointment: statusAppointment || 0,
@@ -29,5 +29,5 @@ export default async function handler(
     },
   })
 
-  res.status(200).json({ appointment })
+  res.status(200).json({ appointments })
 }

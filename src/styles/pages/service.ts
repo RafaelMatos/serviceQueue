@@ -28,3 +28,21 @@ export const RegistersWrapper = styled('section', {
     borderRadius: '$md',
   },
 })
+export const AppointmentListWrapper = styled('section', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$4',
+  overflowY: 'scroll',
+
+  '&::-webkit-scrollbar': {
+    width: 6,
+  },
+  '&::-webkit-scrollbar-track': {
+    background: '$gray700',
+    borderRadius: '$md',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    background: '$gray600',
+    borderRadius: '$md',
+  },
+})

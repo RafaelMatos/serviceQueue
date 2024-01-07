@@ -1,15 +1,20 @@
-import { AppointmentRegister } from '@/components/AppointmentRegister'
+import { AppointmentsList } from '@/components/AppointmentsList'
 import { PatientRegister } from '@/components/PatientRegister'
-import { RegistersWrapper, ServiceContainer } from '@/styles/pages/service'
+import {
+  AppointmentListWrapper,
+  RegistersWrapper,
+  ServiceContainer,
+} from '@/styles/pages/service'
 
 export default function ServicePage() {
   return (
     <ServiceContainer>
       <RegistersWrapper>
         <PatientRegister />
-        {/* <AppointmentRegister /> */}
       </RegistersWrapper>
-      <div>Lista de consultas</div>
+      <AppointmentListWrapper>
+        <AppointmentsList />
+      </AppointmentListWrapper>
       <div>
         <div>Em atendimento</div>
         <div>Proximo</div>
