@@ -27,6 +27,10 @@ export default async function handler(
       status_appointment: statusAppointment || 0,
       isPriority,
     },
+    include: {
+      patient: true,
+      statusAppointment: true,
+    },
   })
 
   res.status(200).json({ appointments })
