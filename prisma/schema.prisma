@@ -18,7 +18,25 @@ model Patient {
   created_at  DateTime      @default(now())
   Appointment Appointment[]
 
+  genderType Gender @relation(fields: [gender], references: [type])
+
+  @@index([gender])
   @@map("patients")
+}
+
+model Employee {
+  id         String   @id @default(uuid())
+  first_name String
+  last_name  String
+  age        Int
+  gender     Int
+  cpf        String   @unique
+  created_at DateTime @default(now())
+
+  genderType Gender @relation(fields: [gender], references: [type])
+
+  @@index([gender])
+  @@map("employees")
 }
 
 model Appointment {
@@ -34,6 +52,15 @@ model Appointment {
   @@index([patient_id])
   @@index([status_appointment])
   @@map("appointments")
+}
+
+model Gender {
+  type        Int        @id @unique
+  description String
+  Patient     Patient[]
+  Employee    Employee[]
+
+  @@map("genders")
 }
 
 model AppointmentStatus {

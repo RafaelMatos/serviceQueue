@@ -1,12 +1,17 @@
 import { styled } from '../../../../stitches.config'
 
 export const TextInputContainer = styled('div', {
-  backgroundColor: '$gray900',
-
+  background: 'linear-gradient(90deg, #1c1917 0%,#1c1917 100%)',
   borderRadius: '$sm',
-  border: '2px solid $gray900',
+  border: '1px solid $gray900',
   display: 'flex',
   alignItems: 'center',
+  transition: '0.5s ease-in-out',
+  input: {
+    'caret-color': '$orange300',
+    fontSize: '$lg',
+    fontWeight: '$bold',
+  },
 
   variants: {
     size: {
@@ -28,7 +33,8 @@ export const TextInputContainer = styled('div', {
   },
 
   '&:has(input:focus)': {
-    borderColor: '$orange300',
+    borderColor: '$orange100',
+    background: '$black-gradient-horizontal',
   },
   '&:has(input:disabled)': {
     opacity: 0.5,

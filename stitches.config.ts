@@ -1,4 +1,4 @@
-import { createStitches } from '@stitches/react';
+import { createStitches } from '@stitches/react'
 
 export const { styled, getCssText, globalCss, theme } = createStitches({
   theme: {
@@ -6,7 +6,7 @@ export const { styled, getCssText, globalCss, theme } = createStitches({
       default: 'Nunito, sans-serif',
     },
 
-		space: {
+    space: {
       px: '1px',
       1: '0.25rem',
       2: '0.5rem',
@@ -19,7 +19,7 @@ export const { styled, getCssText, globalCss, theme } = createStitches({
       10: '2.5rem',
     },
 
-		fontSizes: {
+    fontSizes: {
       xs: '0.75rem',
       sm: '0.875rem',
       md: '1rem',
@@ -28,7 +28,7 @@ export const { styled, getCssText, globalCss, theme } = createStitches({
       '2xl': '1.5rem',
     },
 
-		fontWeights: {
+    fontWeights: {
       regular: '400',
       medium: '500',
       bold: '700',
@@ -42,11 +42,11 @@ export const { styled, getCssText, globalCss, theme } = createStitches({
     },
 
     colors: {
-			white: '#FFFFFF',
+      white: '#FFFFFF',
       black: '#000000',
 
-      red100:'#F75A68',
-      red200:'#F64251',
+      red100: '#F75A68',
+      red200: '#F64251',
 
       orange100: '#FFB783',
       orange200: '#FF9F5A',
@@ -54,7 +54,7 @@ export const { styled, getCssText, globalCss, theme } = createStitches({
       orange400: '#FF6F09',
       orange500: '#df5d00',
 
-      gray50:  '#fafaf9',
+      gray50: '#fafaf9',
       gray100: '#f5f5f4',
       gray200: '#e7e5e4',
       gray300: '#d6d3d1',
@@ -65,11 +65,12 @@ export const { styled, getCssText, globalCss, theme } = createStitches({
       gray800: '#292524',
       gray900: '#1c1917',
 
-			'gradient-vertical': `linear-gradient(180deg, #df5d00 0%, #ff9f5a 100%)`,
-      'gradient-horizontal': `linear-gradient(90deg, #df5d00 0%, #ff9f5a 100%)`,
+      'gradient-vertical': `linear-gradient(180deg, #FF8732 0%, #FF6F09 100%)`,
+      'gradient-horizontal': `linear-gradient(90deg, #FF8732 0%, #FF6F09 100%)`,
+      'black-gradient-horizontal': `linear-gradient(90deg, #292524 0%,#1c1917 100%)`,
     },
 
-		radii: {
+    radii: {
       xs: '2.5px',
       sm: '5px',
       md: '10px',
