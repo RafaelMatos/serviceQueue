@@ -20,14 +20,36 @@ export const LogoSection = styled('section', {
 
 export const WelcomeSection = styled('section', {
   width: '100%',
-  maxWidth: 372,
+  //
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  alignItems: 'center',
   paddingLeft: 20,
+  '> img': {
+    marginBottom: '$4',
+  },
 
-  section: {
-    marginTop: 40,
+  // section: {
+  //   marginTop: 40,
+  // },
+})
+export const WelcomeSaluting = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: '$6',
+  marginBottom: '$6',
+})
+export const Slogan = styled('h1', {
+  display: 'flex',
+  position: 'relative',
+  fontSize: '$3xl',
+  color: '$black',
+  gap: '$2',
+  '> span': {
+    color: '$orange300',
   },
 })

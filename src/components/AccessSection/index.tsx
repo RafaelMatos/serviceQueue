@@ -89,7 +89,7 @@ export const AccessSection = ({ type, icon }: AccessSectionProps) => {
             {errorMsg}
           </Text>
         )}
-        <Button text="Entrar" icon={icon} disabled={type === 'patients'} />
+        <Button text="Entrar" disabled={type === 'patients'} />
       </form>
     </Container>
   )

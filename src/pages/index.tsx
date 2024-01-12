@@ -5,10 +5,13 @@ import { Heading, Text } from '@/components/Typography'
 import {
   AccessContainer,
   LogoSection,
+  Slogan,
+  WelcomeSaluting,
   WelcomeSection,
 } from '@/styles/pages/home'
 import { Gear, User } from '@phosphor-icons/react'
 import Head from 'next/head'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -18,10 +21,23 @@ export default function Home() {
       </Head>
       <LogoSection />
       <WelcomeSection>
-        <Heading>Bem vindo ao HigIA Service Queue</Heading>
-        <Text>Entre como paciente ou funcionario da HigIA.</Text>
-        <AccessSection type="employees" icon={<Gear size={24} />} />
+        <Image
+          src="/images/logo_higia.svg"
+          width={120}
+          height={100}
+          alt="HigIA logo"
+        />
         <AccessSection type="patients" icon={<User size={24} />} />
+        <WelcomeSaluting>
+          <Heading>Bem vindo ao HigIA Service Queue</Heading>
+          <Slogan>
+            <span>A medicina do futuro</span>
+            acontece hoje.
+          </Slogan>
+          {/* <Text>Entre como paciente ou funcionario da HigIA.</Text> */}
+        </WelcomeSaluting>
+        <AccessSection type="employees" icon={<Gear size={24} />} />
+
         {/* <AccessButtons /> */}
       </WelcomeSection>
     </AccessContainer>
