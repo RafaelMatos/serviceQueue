@@ -1,40 +1,122 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Service Queue🏥
 
-## Getting Started
+Projeto em desenvolvimento como proposta de desafio da HigIA;
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+<!-- <img src='./src/assets/tela.gif' alt='gif da tela da aplicação Ignite Call'> -->
+
+<!-- <details>
+    <summary>Responsivo</summary>
+    <img src='./src/assets/responsive.png' alt='print da tela da aplicação Ignite Call'>
+</details> -->
+
+## Tecnologias usadas ⚙
+
+- Next.js
+- React.js
+- Typescript
+- Zod
+- React Hook Form
+- Prisma
+- Axios
+<!-- - Ignite-ui -->
+<!-- - Nookies -->
+<!-- - NextAuth.js
+- DayJs
+- Google Apis -->
+
+## Atualizações 🔃
+
+  <!-- <details>
+    <summary>Histórico</summary>
+
+      - Adicionado a configuração pageExtensions do Next.js;
+
+      - Começando a construção do componente Home;
+
+      - Adicionando componente ClaimUsernameForm à Home;
+
+      - Adicionada validação com zod em ClaimUsernameForm;
+
+      - Construindo página de registro;
+
+      - Salvando usuário no banco utilizando o Prisma;
+
+      - Utilizando o Nookies para pegar nos cookies os dados de usuário salvo;
+
+      - Construindo página de conexão com Google Calendar;
+
+      - Fazendo autenticação oAuth2 para acessar APIs do Google  utilizando o NextAuth.js;
+
+      - Criado um novo Prisma Adapter para o NextAuth;
+
+      - Finalizado autenticação com Google, com permissão ao Calendar.
+
+      - Criada página de intervalo de horários;
+
+      - Adicionada validação do checkbox;
+
+      - Adicionada validação do input de horario inicial e final;
+
+      - Salvando intervalo de horário em banco de dados;
+
+      - Criada pagina de atualização do usuário;
+
+      - Salvando bio do usuário no banco de dados.
+
+    
+</details> -->
+
+  - Criando página de agendamento;
+
+  - Tela de acesso de funcionário e paciente
+  - Cadastro de paciente
+  - Confirmação de consulta
+  - Listagem de consultas
+  - Acesso de funcionario pelo CPF
+
+
+  <!-- <img src='./src/assets/update.gif' alt='gif da tela da aplicação Ignite Call'> -->
+  
+  
+
+## Como utilizar
+
+- Clone o projeto do repositório
+
+```
+git clone https://github.com/RafaelMatos/serviceQueue
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Acesse a pasta do projeto
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+cd serviceQueue
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Instale as dependências
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+npm install
+```
+- Criar arquivo .env com as chaves necessarias( seguir arquivo .envExample)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Inicializa o Prisma( Usar banco de dados de sua preferencia, no exemplo é usado o mysql)
 
-## Learn More
+```
+npx prisma init --datasource-provider mysql
+```
+- Realiza as migrations do Prisma
 
-To learn more about Next.js, take a look at the following resources:
+```
+npx prisma migrate dev --name init
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Execute o projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+npm run dev
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Acesse no navegador o endereço indicado no terminal
