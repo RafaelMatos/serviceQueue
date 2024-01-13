@@ -20,7 +20,7 @@ export const LogoSection = styled('section', {
 
 export const WelcomeSection = styled('section', {
   width: '100%',
-  //
+  height: '100%',
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',

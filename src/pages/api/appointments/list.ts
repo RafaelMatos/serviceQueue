@@ -8,12 +8,20 @@ export default async function handler(
 ) {
   if (req.method !== 'GET') return res.status(405).end()
 
-  const appointment = await prisma.appointment.findMany({
+  const appointments = await prisma.appointment.findMany({
+    orderBy: {
+      created_at: 'asc',
+    },
     include: {
       patient: true,
       statusAppointment: true,
     },
   })
+  const priorityAppointments = appointments.filter(
+    (appointment) => appointment.isPriority === true,
+  )
 
-  res.status(200).json({ appointment })
+  console.log('priprityAppointments:', priorityAppointments)
+
+  res.status(200).json({ appointments })
 }

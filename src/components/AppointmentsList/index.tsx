@@ -10,6 +10,7 @@ import { api } from '@/lib/axios'
 import { useAppointment } from '@/hooks/useAppointment'
 import { useQuery } from '@tanstack/react-query'
 import { IAppointment } from '@/context/AppointmentContext'
+import dayjs from 'dayjs'
 
 export const AppointmentsList = () => {
   const { getAppointmentList, appointmentList } = useAppointment()
@@ -21,18 +22,37 @@ export const AppointmentsList = () => {
       const { data } = await api.get('/appointments/list')
 
       // setOutput(JSON.stringify(data?.appointment, null, 2))
-      return data?.appointment ?? []
+      return data?.appointments ?? []
     },
   })
 
+  const todayAppointments = appointments?.filter(
+    (appointment) =>
+      dayjs(appointment.created_at).format('DD/MM/YYYY') ===
+      dayjs().format('DD/MM/YYYY'),
+  )
+
   return (
     <Container>
+      {/* {JSON.stringify(dayjs().date())} */}
       <Heading size="md">Consultas</Heading>
       {/* {output && <Text>{output}</Text>} */}
-      {appointments?.map((appointment) => {
+      {todayAppointments?.map((appointment) => {
         return (
           <Appointment key={appointment.id}>
             <AppointmentInfo>
+              <AppointmentItem>
+                <Text>Data:</Text>
+                <Text color="gray-400">
+                  {dayjs(appointment.created_at).format('DD/MM/YYYY')}
+                </Text>
+              </AppointmentItem>
+              <AppointmentItem>
+                <Text>Horário:</Text>
+                <Text color="gray-400">
+                  {dayjs(appointment.created_at).format('HH:mm')}
+                </Text>
+              </AppointmentItem>
               <AppointmentItem>
                 <Text>Nome:</Text>
                 <Text color="gray-400">{appointment.patient?.name}</Text>
