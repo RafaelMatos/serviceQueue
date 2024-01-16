@@ -5,8 +5,10 @@ import {
   RegistersWrapper,
   ServiceContainer,
 } from '@/styles/pages/service'
+import { NextPageWithLayout } from './_app'
+import { DefaultLayout } from '@/layouts/DefaultLayout'
 
-export default function ServicePage() {
+const ServicePage: NextPageWithLayout = () => {
   return (
     <ServiceContainer>
       <RegistersWrapper>
@@ -22,3 +24,9 @@ export default function ServicePage() {
     </ServiceContainer>
   )
 }
+
+ServicePage.getLayout = (page) => {
+  return <DefaultLayout title="Pagina Inicial">{page}</DefaultLayout>
+}
+
+export default ServicePage
