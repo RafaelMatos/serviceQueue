@@ -3,6 +3,7 @@ import { styled } from '../../../stitches.config'
 export const Container = styled('section', {
   display: 'flex',
   flexDirection: 'column',
+  width: '100%',
   border: '2px solid $orange500',
   borderRadius: '$md',
   padding: '$2',

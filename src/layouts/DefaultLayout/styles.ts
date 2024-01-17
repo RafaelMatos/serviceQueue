@@ -9,3 +9,17 @@ export const Container = styled('main', {
     flexDirection: 'row',
   },
 })
+export const SectionPage = styled('section', {
+  overflowY: 'auto',
+  '&::-webkit-scrollbar': {
+    width: 6,
+  },
+  '&::-webkit-scrollbar-track': {
+    background: '$gray700',
+    borderRadius: '$md',
+  },
+  '&::-webkit-scrollbar-thumb': {
+    background: '$gray600',
+    borderRadius: '$md',
+  },
+})

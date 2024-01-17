@@ -5,7 +5,8 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import { Nunito } from 'next/font/google'
-import { ReactElement, ReactNode, Component } from 'react'
+import { ReactElement, ReactNode } from 'react'
+import '../lib/dayjs'
 
 export const nunito = Nunito({ subsets: ['latin'] })
 
