@@ -75,6 +75,8 @@ Projeto em desenvolvimento como proposta de desafio da HigIA;
   - Confirmação de consulta
   - Listagem de consultas
   - Acesso de funcionario pelo CPF
+  - Criado layout padrão da aplicação
+  - Redefinindo páginas de funcionário
 
 
   <!-- <img src='./src/assets/update.gif' alt='gif da tela da aplicação Ignite Call'> -->
