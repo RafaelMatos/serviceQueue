@@ -4,7 +4,7 @@ Projeto em desenvolvimento como proposta de desafio da HigIA;
 
 
 
-<!-- <img src='./src/assets/tela.gif' alt='gif da tela da aplicação Ignite Call'> -->
+<img src='public/tela.gif' alt='gif da tela da aplicação Service Queue'>
 
 <!-- <details>
     <summary>Responsivo</summary>
