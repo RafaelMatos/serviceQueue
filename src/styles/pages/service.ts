@@ -1,48 +1,37 @@
 import { styled } from '../../../stitches.config'
 
-export const ServiceContainer = styled('main', {
-  display: 'grid',
-  gridTemplateColumns: '1.1fr 1fr 1fr',
+export const ServiceContainer = styled('div', {
+  display: 'flex',
   padding: 20,
-  height: '100vh',
-  maxHeight: '100vh',
   gap: '$4',
-  overflowY: 'hidden',
   marginRight: '$2',
 })
-export const RegistersWrapper = styled('section', {
+export const TodayAppointments = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$4',
-  overflowY: 'scroll',
-
-  '&::-webkit-scrollbar': {
-    width: 6,
-  },
-  '&::-webkit-scrollbar-track': {
-    background: '$gray700',
-    borderRadius: '$md',
-  },
-  '&::-webkit-scrollbar-thumb': {
-    background: '$gray600',
-    borderRadius: '$md',
-  },
 })
-export const AppointmentListWrapper = styled('section', {
+export const TodayAppointment = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'start',
+  gap: '$4',
+})
+export const BoxAppointment = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'row',
+  padding: '$4',
+  border: '1px solid $gray700',
+  gap: '$2',
+})
+export const InfoAppointment = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '$4',
-  overflowY: 'scroll',
-
-  '&::-webkit-scrollbar': {
-    width: 6,
-  },
-  '&::-webkit-scrollbar-track': {
-    background: '$gray700',
-    borderRadius: '$md',
-  },
-  '&::-webkit-scrollbar-thumb': {
-    background: '$gray600',
-    borderRadius: '$md',
-  },
+  padding: '$4',
+  gap: '$2',
+})
+export const AppointmentDateHeader = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
 })
