@@ -5,7 +5,6 @@ export const Container = styled('aside', {
   zIndex: '0',
   display: 'flex',
   flexDirection: 'column',
-  height: '100vh',
   background: '$black-gradient-vertical',
   overflow: 'hidden',
   boxShadow:

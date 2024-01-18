@@ -10,6 +10,7 @@ export const Container = styled('main', {
   },
 })
 export const SectionPage = styled('section', {
+  height: '100vh',
   overflowY: 'auto',
   '&::-webkit-scrollbar': {
     width: 6,
