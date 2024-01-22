@@ -21,7 +21,5 @@ export default async function handler(
     (appointment) => appointment.isPriority === true,
   )
 
-  console.log('priprityAppointments:', priorityAppointments)
-
-  res.status(200).json({ appointments })
+  res.status(200).json({ appointments, priorityAppointments })
 }

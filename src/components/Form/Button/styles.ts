@@ -21,8 +21,5 @@ export const ButtonContainer = styled('button', {
   },
   '&:not(:disabled):hover': {
     scale: '1.01',
-    // svg: {
-    //   scale: '1.5',
-    // },
   },
 })

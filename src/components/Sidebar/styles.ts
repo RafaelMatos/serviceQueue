@@ -58,7 +58,6 @@ export const NavItems = styled('button', {
   paddingLeft: '$4',
   background: 'transparent',
   borderRight: '4px solid transparent',
-  // padding: '$4 $6',
   gap: '$4',
   transition: '0.4s  ease-in',
 
@@ -74,13 +73,11 @@ export const NavItems = styled('button', {
   variants: {
     isOpen: {
       true: {
-        // padding: '$4 $6',
         '> p': {
           display: 'hidden',
         },
       },
       false: {
-        // padding: '$3 $5',
         '> p': {
           display: 'none',
         },

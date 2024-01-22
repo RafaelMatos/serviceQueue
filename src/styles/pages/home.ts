@@ -30,10 +30,6 @@ export const WelcomeSection = styled('section', {
   '> img': {
     marginBottom: '$4',
   },
-
-  // section: {
-  //   marginTop: 40,
-  // },
 })
 export const WelcomeSaluting = styled('div', {
   display: 'flex',

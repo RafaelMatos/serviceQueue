@@ -4,7 +4,6 @@ import { SelectContainer } from './styles'
 import { Option } from './Option'
 
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
-  // icon?: ReactNode
   css?: CSS
   options: {
     label: string

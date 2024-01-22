@@ -7,7 +7,6 @@ import {
   Container,
 } from './styles'
 import { api } from '@/lib/axios'
-// import { useAppointment } from '@/hooks/useAppointment'
 import { useQuery } from '@tanstack/react-query'
 import { IAppointment } from '@/context/AppointmentContext'
 import dayjs from 'dayjs'
@@ -32,9 +31,7 @@ export const AppointmentsList = () => {
 
   return (
     <Container>
-      {/* {JSON.stringify(dayjs().date())} */}
       <Heading size="md">Consultas</Heading>
-      {/* {output && <Text>{output}</Text>} */}
       {todayAppointments?.map((appointment) => {
         return (
           <Appointment key={appointment.id}>

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Container, SectionPage } from './styles'
+import { Container, PageContent, SectionPage } from './styles'
 import { Header } from '@/components/Header'
 import { Sidebar } from '@/components/Sidebar'
 
@@ -12,10 +12,12 @@ export const DefaultLayout = ({ children, title }: DefaultLayoutProps) => {
   return (
     <Container>
       <Header title={title} />
-      <section>
+      {/* <section> */}
+      <SectionPage>
         <Sidebar />
-        <SectionPage>{children}</SectionPage>
-      </section>
+        <PageContent>{children}</PageContent>
+      </SectionPage>
+      {/* </section> */}
     </Container>
   )
 }

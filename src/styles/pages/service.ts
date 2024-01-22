@@ -2,7 +2,6 @@ import { styled } from '../../../stitches.config'
 
 export const ServiceContainer = styled('div', {
   display: 'flex',
-  padding: 20,
   gap: '$4',
   marginRight: '$2',
 })

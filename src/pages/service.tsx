@@ -18,6 +18,8 @@ import { useQuery } from '@tanstack/react-query'
 import { IAppointment } from '@/context/AppointmentContext'
 import { Avatar } from '@/components/ui/Avatar'
 import { faker } from '@faker-js/faker'
+import { Button } from '@/components/Form/Button'
+import { Heart, Heartbeat } from '@phosphor-icons/react'
 
 const ServicePage: NextPageWithLayout = () => {
   const { appointmentList } = useAppointment()
@@ -52,7 +54,7 @@ const ServicePage: NextPageWithLayout = () => {
                 <BoxAppointment>
                   <Avatar
                     src={faker.internet.avatar()}
-                    alt="Avatar do usuário Rafael Matos"
+                    alt="Avatar do paciente"
                   />
 
                   <InfoAppointment>
@@ -66,6 +68,7 @@ const ServicePage: NextPageWithLayout = () => {
                         : 'Atendimento normal'}
                     </Text>
                   </InfoAppointment>
+                  <Button text="Em atendimento" icon={<Heartbeat />} />
                 </BoxAppointment>
               </TodayAppointment>
             )

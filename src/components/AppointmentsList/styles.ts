@@ -28,5 +28,4 @@ export const AppointmentInfo = styled('div', {
 export const AppointmentItem = styled('div', {
   display: 'flex',
   gap: '$2',
-  // padding: '$2',
 })

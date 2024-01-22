@@ -1,6 +1,5 @@
 import { OptionHTMLAttributes, ReactNode } from 'react'
 import { Container } from './styles'
-// import { Text } from '@/components/Typography'
 import { CSS } from '@stitches/react'
 
 export type Option = {
@@ -16,7 +15,6 @@ type OptionProps = OptionHTMLAttributes<HTMLOptionElement> & {
 export const Option = ({ option, css, ...props }: OptionProps) => {
   return (
     <Container {...props} css={css}>
-      {/* <Text>{option.label}</Text> */}
       {option.label}
       {option.icon}
     </Container>

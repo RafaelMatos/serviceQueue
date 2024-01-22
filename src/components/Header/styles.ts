@@ -4,7 +4,6 @@ import { Heading } from '../Typography'
 export const Container = styled('header', {
   display: 'flex',
   zIndex: 999,
-  // height: 'auto',
   flexDirection: 'row',
   padding: '$4 $6',
   alignItems: 'center',
@@ -13,18 +12,15 @@ export const Container = styled('header', {
   background: '$gray800',
   boxShadow:
     'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px',
-  // marginBottom: '$4',
 })
 export const PageInfo = styled('div', {
   display: 'flex',
-  // flexDirection: 'row',
 
   alignItems: 'center',
   gap: '$4',
 })
 export const UserInfo = styled('div', {
   display: 'flex',
-  // flexDirection: 'row',
   alignItems: 'center',
   gap: '$4',
 })

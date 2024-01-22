@@ -32,9 +32,5 @@ export const SelectContainer = styled('div', {
     '&:focus': {
       outline: 'none',
     },
-
-    // '> optgroup': {
-    //   all: 'unset',
-    // },
   },
 })

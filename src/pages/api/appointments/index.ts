@@ -3,10 +3,6 @@ import { z } from 'zod'
 import dayjs from 'dayjs'
 import { prisma } from '@/lib/prisma'
 
-// type Data = {
-//   name: string
-// }
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,

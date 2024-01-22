@@ -1,12 +1,10 @@
 import { styled } from '../../../stitches.config'
 
-export const PatientsContainer = styled('main', {
+export const PatientsContainer = styled('div', {
   display: 'flex',
-  // gridTemplateColumns: 'auto 1fr',
+  width: '100%',
   padding: 20,
   height: '100%',
-  maxHeight: '100vh',
   gap: '$4',
-  overflowY: 'hidden',
   marginRight: '$2',
 })

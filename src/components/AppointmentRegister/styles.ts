@@ -101,5 +101,4 @@ export const PatientInfo = styled('div', {
 export const PatientInfoItem = styled('div', {
   display: 'flex',
   gap: '$2',
-  // padding: '$2',
 })
