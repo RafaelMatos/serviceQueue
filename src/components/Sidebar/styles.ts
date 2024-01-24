@@ -62,8 +62,8 @@ export const NavItems = styled('button', {
   transition: '0.4s  ease-in',
 
   '&:hover': {
-    borderRight: '4px solid $orange300',
-    background: '$orange100',
+    borderRight: '4px solid $cyan300',
+    background: '$cyan100',
     color: '$gray800',
     opacity: '0.8',
     '> p': {

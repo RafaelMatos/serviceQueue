@@ -46,6 +46,6 @@ export const Slogan = styled('h1', {
   color: '$black',
   gap: '$2',
   '> span': {
-    color: '$orange300',
+    color: '$cyan300',
   },
 })

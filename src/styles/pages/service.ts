@@ -57,11 +57,11 @@ export const ButtonStatus = styled('button', {
   transition: '0.4s easy-in',
 
   '&:hover': {
-    background: '$orange500',
+    background: '$cyan500',
     cursor: 'pointer',
   },
   '>svg': {
-    background: '$orange500',
+    background: '$cyan500',
     borderRadius: '$full',
     padding: '$2',
   },

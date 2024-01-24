@@ -8,7 +8,7 @@ export const Container = styled('section', {
 export const AccessButton = styled('button', {
   width: '100%',
   aspectRatio: '1/1',
-  background: '$orange300',
+  background: '$cyan300',
   color: '$gray100',
   border: 'none',
   fontWeight: '$bold',
@@ -26,7 +26,7 @@ export const AccessButton = styled('button', {
     cursor: 'not-allowed',
   },
   '&:not(:disabled):hover': {
-    background: '$orange200',
+    background: '$cyan200',
     svg: {
       scale: '1.1',
     },

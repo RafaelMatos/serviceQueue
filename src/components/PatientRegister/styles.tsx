@@ -4,7 +4,7 @@ export const Container = styled('section', {
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  border: '2px solid $orange500',
+  border: '2px solid $cyan500',
   borderRadius: '$md',
   padding: '$2',
 })
@@ -13,7 +13,7 @@ export const FormContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  border: '1px solid $orange500',
+  border: '1px solid $cyan500',
   borderRadius: '$md',
   padding: '$2',
   marginTop: '$2',
@@ -42,10 +42,10 @@ export const Button = styled('button', {
   width: 'fit-content',
   padding: '$2',
   borderRadius: '$sm',
-  background: '$orange300',
+  background: '$cyan300',
   transition: '0.2s ease-in-out',
   '&:hover': {
-    background: '$orange200',
+    background: '$cyan200',
   },
 })
 
@@ -56,7 +56,7 @@ export const Input = styled('input', {
   background: 'none',
   color: '$gray100',
   fontSize: '0.875rem',
-  border: '1px solid $orange100',
+  border: '1px solid $cyan100',
   borderRadius: '$sm',
 
   '&::placeholder': {
@@ -75,7 +75,7 @@ export const Select = styled('select', {
   background: 'none',
   color: '$gray100',
   fontSize: '0.875rem',
-  border: '1px solid $orange100',
+  border: '1px solid $cyan100',
   borderRadius: '$sm',
 
   '&::placeholder': {
@@ -84,11 +84,11 @@ export const Select = styled('select', {
 
   '&:focus': {
     outline: 'none',
-    border: '1px solid $orange200',
+    border: '1px solid $cyan200',
   },
 
   '> option': {
-    color: '$orange100',
+    color: '$cyan100',
     background: '$gray800',
   },
 })

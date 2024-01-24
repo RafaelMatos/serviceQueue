@@ -3,7 +3,7 @@ import { styled } from '../../../stitches.config'
 export const Container = styled('div', {
   width: '100%',
   padding: '$4',
-  background: '$orange500',
+  background: '$cyan500',
   borderRadius: '$xs',
   maxWidth: 372,
   boxShadow:

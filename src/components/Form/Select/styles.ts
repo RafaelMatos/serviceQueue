@@ -2,7 +2,7 @@ import { styled } from '../../../../stitches.config'
 
 export const SelectContainer = styled('div', {
   background: '$gray800',
-  border: '1px solid $orange100',
+  border: '1px solid $cyan100',
   display: 'flex',
   alignItems: 'center',
   width: '100%',
@@ -13,7 +13,7 @@ export const SelectContainer = styled('div', {
   transition: '0.2s ease-in-out',
 
   '&:focus-within': {
-    border: '1px solid $orange200',
+    border: '1px solid $cyan200',
   },
 
   select: {

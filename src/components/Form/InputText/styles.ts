@@ -8,7 +8,7 @@ export const TextInputContainer = styled('div', {
   alignItems: 'center',
   transition: '0.5s ease-in-out',
   input: {
-    'caret-color': '$orange300',
+    'caret-color': '$cyan300',
     fontSize: '$lg',
     fontWeight: '$bold',
   },
@@ -33,7 +33,7 @@ export const TextInputContainer = styled('div', {
   },
 
   '&:has(input:focus)': {
-    borderColor: '$orange100',
+    borderColor: '$cyan100',
     background: '$black-gradient-horizontal',
   },
   '&:has(input:disabled)': {

@@ -17,7 +17,7 @@ export const Header = ({ title }: HeaderProps) => {
           height={70}
           alt="Healthy CodeLogo"
         />
-        <Heading color="orange-200">{title}</Heading>
+        <Heading color="cyan-200">{title}</Heading>
       </PageInfo>
       <UserInfo>
         <Text size="md" color="gray-300">

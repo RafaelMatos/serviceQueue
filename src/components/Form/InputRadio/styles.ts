@@ -27,7 +27,7 @@ export const InputRadioContainer = styled('div', {
   },
 
   '&:has(input:focus)': {
-    borderColor: '$orange300',
+    borderColor: '$cyan300',
   },
   '&:has(input:disabled)': {
     opacity: 0.5,

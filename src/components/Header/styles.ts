@@ -26,5 +26,5 @@ export const UserInfo = styled('div', {
 })
 
 export const PageHeading = styled(Heading, {
-  color: '$orange200',
+  color: '$cyan200',
 })
