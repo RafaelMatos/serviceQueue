@@ -22,14 +22,14 @@ export default function Home() {
       <LogoSection />
       <WelcomeSection>
         <Image
-          src="/images/logo_higia.svg"
-          width={120}
-          height={100}
-          alt="HigIA logo"
+          src="/images/healthyCodeLogo.png"
+          width={250}
+          height={200}
+          alt="Healthy Code logo"
         />
         <AccessSection type="patients" icon={<User size={24} />} />
         <WelcomeSaluting>
-          <Heading>Bem vindo ao HigIA Service Queue</Heading>
+          <Heading>Bem vindo ao Healthy Code - Service Queue</Heading>
           <Slogan>
             <span>A medicina do futuro</span>
             acontece hoje.
