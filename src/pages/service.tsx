@@ -3,6 +3,8 @@ import { PatientRegister } from '@/components/PatientRegister'
 import {
   AppointmentDateHeader,
   BoxAppointment,
+  BoxStatusAppointment,
+  ButtonStatus,
   InfoAppointment,
   ServiceContainer,
   TodayAppointment,
@@ -19,7 +21,13 @@ import { IAppointment } from '@/context/AppointmentContext'
 import { Avatar } from '@/components/ui/Avatar'
 import { faker } from '@faker-js/faker'
 import { Button } from '@/components/Form/Button'
-import { Heart, Heartbeat } from '@phosphor-icons/react'
+import {
+  CallBell,
+  CheckFat,
+  ClipboardText,
+  Heart,
+  Heartbeat,
+} from '@phosphor-icons/react'
 
 const ServicePage: NextPageWithLayout = () => {
   const { appointmentList } = useAppointment()
@@ -68,7 +76,35 @@ const ServicePage: NextPageWithLayout = () => {
                         : 'Atendimento normal'}
                     </Text>
                   </InfoAppointment>
-                  <Button text="Em atendimento" icon={<Heartbeat />} />
+                  <BoxStatusAppointment>
+                    <Text size="sm" color="gray-400">
+                      Atualizar status do paciente
+                    </Text>
+                    <ButtonStatus>
+                      <Text size="sm" color="gray-200">
+                        Chamar Paciente
+                      </Text>
+                      <CallBell size={30} />
+                    </ButtonStatus>
+                    <ButtonStatus>
+                      <Text size="sm" color="gray-200">
+                        Atender Paciente
+                      </Text>
+                      <ClipboardText size={30} />
+                    </ButtonStatus>
+                    <ButtonStatus>
+                      <Text size="sm" color="gray-200">
+                        Iniciar consulta
+                      </Text>
+                      <Heartbeat size={30} />
+                    </ButtonStatus>
+                    <ButtonStatus>
+                      <Text size="sm" color="gray-200">
+                        Finalizar consulta
+                      </Text>
+                      <CheckFat size={30} />
+                    </ButtonStatus>
+                  </BoxStatusAppointment>
                 </BoxAppointment>
               </TodayAppointment>
             )
