@@ -15,7 +15,8 @@ export const PageContent = styled('div', {
   paddingTop: '$5',
   marginLeft: '$5',
 
-  marginBottom: 100,
+  marginBottom: 60,
+  paddingBottom: 60,
   overflowY: 'auto',
   overflowX: 'hidden',
   width: '100%',
