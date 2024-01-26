@@ -1,6 +1,6 @@
 # Service Queue🏥
 
-Projeto em desenvolvimento como proposta de desafio da HigIA;
+Sistema para clinica médica para manutenção da fila de atendimento de pacientes em um sistema médico. Aplicação full stack, utilizando o conceito de backend for frontend permitido pelo framework Next.js;
 
 
 
@@ -33,38 +33,6 @@ Projeto em desenvolvimento como proposta de desafio da HigIA;
 
       - Adicionado a configuração pageExtensions do Next.js;
 
-      - Começando a construção do componente Home;
-
-      - Adicionando componente ClaimUsernameForm à Home;
-
-      - Adicionada validação com zod em ClaimUsernameForm;
-
-      - Construindo página de registro;
-
-      - Salvando usuário no banco utilizando o Prisma;
-
-      - Utilizando o Nookies para pegar nos cookies os dados de usuário salvo;
-
-      - Construindo página de conexão com Google Calendar;
-
-      - Fazendo autenticação oAuth2 para acessar APIs do Google  utilizando o NextAuth.js;
-
-      - Criado um novo Prisma Adapter para o NextAuth;
-
-      - Finalizado autenticação com Google, com permissão ao Calendar.
-
-      - Criada página de intervalo de horários;
-
-      - Adicionada validação do checkbox;
-
-      - Adicionada validação do input de horario inicial e final;
-
-      - Salvando intervalo de horário em banco de dados;
-
-      - Criada pagina de atualização do usuário;
-
-      - Salvando bio do usuário no banco de dados.
-
     
 </details> -->
 
@@ -77,6 +45,8 @@ Projeto em desenvolvimento como proposta de desafio da HigIA;
   - Acesso de funcionario pelo CPF
   - Criado layout padrão da aplicação
   - Redefinindo páginas de funcionário
+  - Adicionado botões de atualização ed status da consulta
+  - Criada rota de atualização de consulta
 
 
   <!-- <img src='./src/assets/update.gif' alt='gif da tela da aplicação Ignite Call'> -->
