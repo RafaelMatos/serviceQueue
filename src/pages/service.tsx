@@ -1,5 +1,3 @@
-import { AppointmentsList } from '@/components/AppointmentsList'
-import { PatientRegister } from '@/components/PatientRegister'
 import {
   AppointmentDateHeader,
   BoxAppointment,
@@ -17,25 +15,20 @@ import { Text } from '@/components/Typography'
 import { useAppointment } from '@/hooks/useAppointment'
 import { api } from '@/lib/axios'
 import { useQuery } from '@tanstack/react-query'
-import { IAppointment } from '@/context/AppointmentContext'
+import { IAppointment, Status } from '@/context/AppointmentContext'
 import { Avatar } from '@/components/ui/Avatar'
 import { faker } from '@faker-js/faker'
-import { Button } from '@/components/Form/Button'
-import {
-  CallBell,
-  CheckFat,
-  ClipboardText,
-  Heart,
-  Heartbeat,
-} from '@phosphor-icons/react'
+import { CallBell, CheckFat, Heartbeat } from '@phosphor-icons/react'
 
 const ServicePage: NextPageWithLayout = () => {
-  const { appointmentList } = useAppointment()
+  const { appointmentList, handleSetAppointmentList, updateAppointment } =
+    useAppointment()
 
   const { data: appointments } = useQuery<IAppointment[]>({
     queryKey: ['appointments'],
     queryFn: async () => {
       const { data } = await api.get('/appointments/list')
+      handleSetAppointmentList(data?.appointments)
       return data?.appointments ?? []
     },
   })
@@ -45,6 +38,40 @@ const ServicePage: NextPageWithLayout = () => {
       dayjs(appointment.created_at).format('DD/MM/YYYY') ===
       dayjs().format('DD/MM/YYYY'),
   )
+
+  const { CALLED, INSERVICE, COMPLETED } = Status
+
+  const changeAppointmentStatusState = (
+    appointment: IAppointment,
+    status: number,
+  ) => {
+    const editedAppointments = appointmentList.map((appointmentItem) => {
+      if (appointmentItem.id === appointment.id) {
+        appointmentItem.status_appointment = status
+        return appointmentItem
+      }
+      return appointmentItem
+    })
+    handleSetAppointmentList(editedAppointments)
+  }
+  const handleCallPatient = (handledAppointment: IAppointment) => {
+    changeAppointmentStatusState(handledAppointment, CALLED)
+    updateAppointment(handledAppointment.id, {
+      status_appointment: CALLED,
+    })
+  }
+  const handleStartAppointment = (handledAppointment: IAppointment) => {
+    changeAppointmentStatusState(handledAppointment, INSERVICE)
+    updateAppointment(handledAppointment.id, {
+      status_appointment: INSERVICE,
+    })
+  }
+  const handleFinishAppointment = (handledAppointment: IAppointment) => {
+    changeAppointmentStatusState(handledAppointment, COMPLETED)
+    updateAppointment(handledAppointment.id, {
+      status_appointment: COMPLETED,
+    })
+  }
   return (
     <ServiceContainer>
       <TodayAppointments>
@@ -77,32 +104,42 @@ const ServicePage: NextPageWithLayout = () => {
                     </Text>
                   </InfoAppointment>
                   <BoxStatusAppointment>
-                    <Text size="sm" color="gray-400">
+                    <Text size="md" color="gray-400">
                       Atualizar status do paciente
                     </Text>
-                    <ButtonStatus>
-                      <Text size="sm" color="gray-200">
+                    <ButtonStatus
+                      onClick={() => handleCallPatient(appointment)}
+                      color="orange"
+                    >
+                      <Text size="md" color="gray-200">
                         Chamar Paciente
                       </Text>
-                      <CallBell size={30} />
+                      <CallBell size={30} weight="bold" />
                     </ButtonStatus>
-                    <ButtonStatus>
-                      <Text size="sm" color="gray-200">
+                    {/* <ButtonStatus onClick={()=>handleStatusButton(0,appointment)} color="orange">
+                      <Text size="md" color="gray-200">
                         Atender Paciente
                       </Text>
                       <ClipboardText size={30} />
-                    </ButtonStatus>
-                    <ButtonStatus>
-                      <Text size="sm" color="gray-200">
+                    </ButtonStatus> */}
+                    <ButtonStatus
+                      onClick={() => handleStartAppointment(appointment)}
+                      color="cyan"
+                      disabled
+                    >
+                      <Text size="md" color="gray-200">
                         Iniciar consulta
                       </Text>
-                      <Heartbeat size={30} />
+                      <Heartbeat size={30} weight="bold" />
                     </ButtonStatus>
-                    <ButtonStatus>
-                      <Text size="sm" color="gray-200">
+                    <ButtonStatus
+                      onClick={() => handleFinishAppointment(appointment)}
+                      color="green"
+                    >
+                      <Text size="md" color="gray-200">
                         Finalizar consulta
                       </Text>
-                      <CheckFat size={30} />
+                      <CheckFat size={30} weight="bold" />
                     </ButtonStatus>
                   </BoxStatusAppointment>
                 </BoxAppointment>
@@ -115,6 +152,15 @@ const ServicePage: NextPageWithLayout = () => {
           </Text>
         )}
       </TodayAppointments>
+      <BoxAppointment>
+        {appointmentList.map((appoint) => {
+          return (
+            <Text key={appoint.id}>
+              {appoint.patient?.name} / {appoint.status_appointment}
+            </Text>
+          )
+        })}
+      </BoxAppointment>
     </ServiceContainer>
   )
 }

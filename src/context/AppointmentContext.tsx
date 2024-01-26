@@ -27,13 +27,28 @@ export interface IAppointment {
   statusAppointment?: IStatusAppointment
 }
 
+export interface IUpdateAppointment {
+  patient_id?: string
+  isPriority?: boolean
+  status_appointment?: number
+}
+
+export const Status = {
+  AWAITING: 0,
+  CANCELED: 1,
+  CALLED: 2,
+  INSERVICE: 3,
+  COMPLETED: 4,
+}
+
 interface AppointmentContextData {
   // letAppointment: () => IAppointment || null
   // setAppointment: () => void
-  // setAppointmentList: () => void
+  handleSetAppointmentList: (appointments: IAppointment[]) => void
   appointmentList: IAppointment[]
   getAppointmentList: () => Promise<[]>
   addToAppointments: (appointment: IAppointment) => void
+  updateAppointment: (appointmentId: string, data: IUpdateAppointment) => void
 }
 
 interface AppointmentContextProviderProps {
@@ -51,6 +66,9 @@ export function AppointmentContextProvider({
   function addToAppointments(appointment: IAppointment) {
     setAppointmentList((state) => [...state, appointment])
   }
+  function handleSetAppointmentList(appointments: IAppointment[]) {
+    setAppointmentList(appointments)
+  }
 
   // const letAppointment = () => {
   //   if (!appointment) {
@@ -63,6 +81,12 @@ export function AppointmentContextProvider({
 
     return data.appointments ?? []
   }
+  const updateAppointment = async (
+    appointmentId: string,
+    data: IUpdateAppointment,
+  ) => {
+    await api.patch(`/appointments/${appointmentId}/update`, data)
+  }
 
   return (
     <AppointmentContext.Provider
@@ -70,6 +94,8 @@ export function AppointmentContextProvider({
         addToAppointments,
         getAppointmentList,
         appointmentList,
+        handleSetAppointmentList,
+        updateAppointment,
       }}
     >
       {children}

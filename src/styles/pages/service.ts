@@ -4,12 +4,13 @@ export const ServiceContainer = styled('div', {
   display: 'flex',
   gap: '$4',
   marginRight: '$2',
+  justifyContent: 'space-between',
 })
 export const TodayAppointments = styled('div', {
   display: 'flex',
   flexDirection: 'column',
 
-  // width: '100%',
+  width: '100%',
   gap: '$4',
 })
 export const TodayAppointment = styled('div', {
@@ -51,18 +52,66 @@ export const ButtonStatus = styled('button', {
   alignItems: 'center',
   justifyContent: 'space-between',
   width: '100%',
-  background: '$gradient-horizontal',
+
   padding: '$1 $2',
   borderRadius: '$lg',
-  transition: '0.4s easy-in',
+  transition: '0.5s ease-in-out',
 
-  '&:hover': {
-    background: '$cyan500',
+  variants: {
+    color: {
+      cyan: {
+        background: '$cyan300',
+        '>svg': {
+          background: '$cyan500',
+        },
+        '&:not(:disabled):hover': {
+          background: '$cyan500',
+        },
+      },
+      orange: {
+        background: '$orange300',
+        '>svg': {
+          background: '$orange500',
+        },
+        '&:not(:disabled):hover': {
+          background: '$orange500',
+        },
+      },
+      green: {
+        background: '$green300',
+        '>svg': {
+          background: '$green500',
+        },
+        '&:not(:disabled):hover': {
+          background: '$green500',
+        },
+      },
+      red: {
+        background: '$red300',
+        '>svg': {
+          background: '$red500',
+        },
+        '&:not(:disabled):hover': {
+          background: '$red500',
+        },
+      },
+    },
+  },
+
+  '&:not(:disabled):hover': {
     cursor: 'pointer',
   },
+  '&:disabled': {
+    opacity: 0.5,
+    cursor: 'not-allowed',
+  },
+
   '>svg': {
-    background: '$cyan500',
     borderRadius: '$full',
     padding: '$2',
+  },
+
+  defaultVariants: {
+    color: 'cyan',
   },
 })

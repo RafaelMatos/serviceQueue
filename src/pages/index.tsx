@@ -25,6 +25,7 @@ export default function Home() {
           src="/images/healthyCodeLogo.png"
           width={250}
           height={200}
+          priority
           alt="Healthy Code logo"
         />
         <AccessSection type="patients" icon={<User size={24} />} />
