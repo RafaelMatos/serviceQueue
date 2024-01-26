@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <AccessContainer>
       <Head>
-        <title>Acesso | HigIA Service Queue</title>
+        <title>Acesso | Healthy Code - Service Queue</title>
       </Head>
       <LogoSection />
       <WelcomeSection>
@@ -35,7 +35,6 @@ export default function Home() {
             <span>A medicina do futuro</span>
             acontece hoje.
           </Slogan>
-          {/* <Text>Entre como paciente ou funcionario da HigIA.</Text> */}
         </WelcomeSaluting>
         <AccessSection type="employees" icon={<Gear size={24} />} />
 
