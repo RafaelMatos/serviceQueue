@@ -47,12 +47,18 @@ export const { styled, getCssText, globalCss, theme } = createStitches({
       white: '#FFFFFF',
       black: '#000000',
 
-      red100: '#F75A68',
-      red200: '#F64251',
+      red100: '#F37373',
+      red300: '#EF4444',
+      red500: '#EB1515',
 
-      orange100: '#FFB783',
+      orange100: '#ffa565',
       orange300: '#FF8732',
-      orange400: '#FF6F09',
+      orange400: '#ff7819',
+      orange500: '#fe6900',
+
+      green100: '#52dcae',
+      green300: '#2Ad199',
+      green500: '#21a77a',
 
       cyan100: '#52c6DC',
       cyan200: '#3DBFD8',
@@ -73,8 +79,12 @@ export const { styled, getCssText, globalCss, theme } = createStitches({
 
       'gradient-vertical': `linear-gradient(180deg, #2AB6D1 0%, #26A4BC 100%)`,
       'gradient-horizontal': `linear-gradient(90deg, #2AB6D1 0%, #26A4BC 100%)`,
-      'cyan-gradient-vertical': `linear-gradient(180deg, #FF8732 0%, #FF6F09 100%)`,
-      'cyan-gradient-horizontal': `linear-gradient(90deg, #FF8732 0%, #FF6F09 100%)`,
+      'orange-gradient-vertical': `linear-gradient(180deg, #FF8732 0%, #ff7819 100%)`,
+      'orange-gradient-horizontal': `linear-gradient(90deg, #FF8732 0%, #ff7819 100%)`,
+      'green-gradient-vertical': `linear-gradient(180deg, #2AD199 0%, #26bc89 100%)`,
+      'green-gradient-horizontal': `linear-gradient(90deg, #2AD199 0%, #26bc89 100%)`,
+      'red-gradient-vertical': `linear-gradient(180deg, #EF4444 0%, #ED2D2D 100%)`,
+      'red-gradient-horizontal': `linear-gradient(90deg, #EF4444 0%, #ED2D2D 100%)`,
       'black-gradient-horizontal': `linear-gradient(90deg, #292524 0%,#1c1917 100%)`,
       'black-gradient-vertical': `linear-gradient(180deg, #292524 0%,#1c1917 100%)`,
     },
