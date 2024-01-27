@@ -19,14 +19,38 @@ export default function Home() {
       <Head>
         <title>Acesso | Healthy Code - Service Queue</title>
       </Head>
-      <LogoSection />
-      <WelcomeSection>
+      <LogoSection>
         <Image
-          src="/images/healthyCodeLogo.png"
-          width={250}
-          height={200}
+          src="/images/HealthyCodeLogo.svg"
+          width={100}
+          height={100}
           priority
           alt="Healthy Code logo"
+        />
+        <Image
+          src="/images/ServiceQueueLogo.svg"
+          width={500}
+          height={150}
+          priority
+          alt="Service Queue logo"
+        />
+
+        <Text size="xl">Aguardando pela medicina de alta qualidade</Text>
+      </LogoSection>
+      <WelcomeSection>
+        <Image
+          src="/images/HealthyCode.svg"
+          width={150}
+          height={30}
+          priority
+          alt="Healthy Code logo"
+        />
+        <Image
+          src="/images/ServiceQueueLogo.svg"
+          width={200}
+          height={48}
+          priority
+          alt="Service Queue logo"
         />
         <AccessSection type="patients" icon={<User size={24} />} />
         <WelcomeSaluting>
