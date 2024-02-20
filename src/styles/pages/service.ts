@@ -1,3 +1,5 @@
+// import Box from '@/components/ui/Box'
+import { Box } from '@/components/ui/Box'
 import { styled } from '../../../stitches.config'
 
 export const ServiceContainer = styled('div', {
@@ -20,14 +22,22 @@ export const TodayAppointment = styled('div', {
   justifyContent: 'start',
   gap: '$4',
 })
-export const BoxAppointment = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
+export const BoxAppointment = styled(Box, {
   flexDirection: 'row',
-  width: '100%',
+})
+
+export const BoxCallPainelHeader = styled('div', {
+  borderBottom: '1px solid $gray700',
   padding: '$4',
-  border: '1px solid $gray700',
-  gap: '$2',
+  width: '100%',
+  marginBottom: '$4',
+})
+export const BoxCallPainelItem = styled(Box, {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  span: {
+    color: '$gray400',
+  },
 })
 export const InfoAppointment = styled('div', {
   display: 'flex',
@@ -40,7 +50,7 @@ export const AppointmentDateHeader = styled('div', {
   display: 'flex',
   flexDirection: 'row',
 })
-export const BoxStatusAppointment = styled(BoxAppointment, {
+export const BoxStatus = styled(Box, {
   flexDirection: 'column',
   maxWidth: 'fit-content',
 })

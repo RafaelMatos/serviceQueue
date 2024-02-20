@@ -1,7 +1,9 @@
 import {
   AppointmentDateHeader,
   BoxAppointment,
-  BoxStatusAppointment,
+  BoxCallPainelHeader,
+  BoxCallPainelItem,
+  BoxStatus,
   ButtonStatus,
   InfoAppointment,
   ServiceContainer,
@@ -19,8 +21,11 @@ import { IAppointment, Status } from '@/context/AppointmentContext'
 import { Avatar } from '@/components/ui/Avatar'
 import { faker } from '@faker-js/faker'
 import { CallBell, CheckFat, Heartbeat } from '@phosphor-icons/react'
+import { Box } from '@/components/ui/Box'
 
 const ServicePage: NextPageWithLayout = () => {
+  const { CALLED, INSERVICE, COMPLETED } = Status
+
   const { appointmentList, handleSetAppointmentList, updateAppointment } =
     useAppointment()
 
@@ -39,7 +44,9 @@ const ServicePage: NextPageWithLayout = () => {
       dayjs().format('DD/MM/YYYY'),
   )
 
-  const { CALLED, INSERVICE, COMPLETED } = Status
+  const calledAppointments = appointmentList?.filter(
+    (called) => called.status_appointment === CALLED,
+  )
 
   const changeAppointmentStatusState = (
     appointment: IAppointment,
@@ -86,7 +93,7 @@ const ServicePage: NextPageWithLayout = () => {
             return (
               <TodayAppointment key={appointment.id}>
                 <span>{dayjs(appointment.created_at).format('hh:mm')}</span>
-                <BoxAppointment>
+                <Box>
                   <Avatar
                     src={faker.internet.avatar()}
                     alt="Avatar do paciente"
@@ -103,7 +110,7 @@ const ServicePage: NextPageWithLayout = () => {
                         : 'Atendimento normal'}
                     </Text>
                   </InfoAppointment>
-                  <BoxStatusAppointment>
+                  <BoxStatus flexDirection="column">
                     <Text size="md" color="gray-400">
                       Atualizar status do paciente
                     </Text>
@@ -141,8 +148,8 @@ const ServicePage: NextPageWithLayout = () => {
                       </Text>
                       <CheckFat size={30} weight="bold" />
                     </ButtonStatus>
-                  </BoxStatusAppointment>
-                </BoxAppointment>
+                  </BoxStatus>
+                </Box>
               </TodayAppointment>
             )
           })
@@ -152,15 +159,28 @@ const ServicePage: NextPageWithLayout = () => {
           </Text>
         )}
       </TodayAppointments>
-      <BoxAppointment>
-        {appointmentList.map((appoint) => {
-          return (
-            <Text key={appoint.id}>
-              {appoint.patient?.name} / {appoint.status_appointment}
-            </Text>
-          )
-        })}
-      </BoxAppointment>
+      <Box flexDirection="column">
+        <BoxCallPainelHeader>
+          <Text size="xl">Painel de chamadas</Text>
+        </BoxCallPainelHeader>
+        {calledAppointments && calledAppointments.length > 0 ? (
+          calledAppointments.map((called) => {
+            return (
+              <BoxCallPainelItem key={called.id}>
+                <Text>{called.patient?.name} </Text>
+                <span>
+                  {' '}
+                  {called.isPriority
+                    ? 'Atendimento prioritário'
+                    : 'Atendimento normal'}
+                </span>
+              </BoxCallPainelItem>
+            )
+          })
+        ) : (
+          <Text color="gray-400">Sem agendamentos</Text>
+        )}
+      </Box>
     </ServiceContainer>
   )
 }
