@@ -12,7 +12,7 @@ export const Header = ({ title }: HeaderProps) => {
     <Container>
       <PageInfo>
         <Image
-          src="/images/healthyCodeLogo.png"
+          src="/images/HealthyCodeLogo.svg"
           width={70}
           height={70}
           alt="Healthy CodeLogo"
