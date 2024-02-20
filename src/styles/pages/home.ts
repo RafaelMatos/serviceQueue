@@ -11,7 +11,7 @@ export const LogoSection = styled('section', {
   width: '100%',
   height: '100%',
   background:
-    '-webkit-linear-gradient(rgba(82, 198, 220, 0.8), rgba(33,145, 167, 0.8)), url("https://live.staticflickr.com/5763/30426489272_758b41e0d3_z.jpg") no-repeat ' /* The least supported option. */,
+    '-webkit-linear-gradient(rgba(107, 206, 225, 0.8), rgba(23,101, 116, 0.8)), url("https://live.staticflickr.com/5763/30426489272_758b41e0d3_z.jpg") no-repeat ' /* The least supported option. */,
   backgroundSize: 'cover',
   display: 'flex',
   flexDirection: 'column',
