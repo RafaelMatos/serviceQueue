@@ -35,7 +35,9 @@ export default function Home() {
           alt="Service Queue logo"
         />
 
-        <Text size="xl">Aguardando pela medicina de alta qualidade</Text>
+        <Text size="xl">
+          Aguardando pelo serviço de saúde de alta qualidade
+        </Text>
       </LogoSection>
       <WelcomeSection>
         <Image
