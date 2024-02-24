@@ -22,6 +22,7 @@ import { Avatar } from '@/components/ui/Avatar'
 import { faker } from '@faker-js/faker'
 import { CallBell, CheckFat, Heartbeat } from '@phosphor-icons/react'
 import { Box } from '@/components/ui/Box'
+import BoxHeader from '@/components/BoxHeader'
 
 const ServicePage: NextPageWithLayout = () => {
   const { CALLED, INSERVICE, COMPLETED } = Status
@@ -160,9 +161,7 @@ const ServicePage: NextPageWithLayout = () => {
         )}
       </TodayAppointments>
       <Box flexDirection="column">
-        <BoxCallPainelHeader>
-          <Text size="xl">Painel de chamadas</Text>
-        </BoxCallPainelHeader>
+        <BoxHeader title="Painel de chamadas" />
         {calledAppointments && calledAppointments.length > 0 ? (
           calledAppointments.map((called) => {
             return (
