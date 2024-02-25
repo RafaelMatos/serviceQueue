@@ -1,20 +1,25 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import {
-  ActionButtons,
-  Button,
-  Container,
-  FormContainer,
-  FormItem,
-  Select,
-} from './styles'
+
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Heading, Text } from '../Typography'
+import { Text } from '../Typography'
 import { TextInput } from '../Form/InputText'
 import { InputRadio } from '../Form/InputRadio'
 import { api } from '@/lib/axios'
 import { AppointmentRegister } from '../AppointmentRegister'
+import * as Dialog from '@radix-ui/react-dialog'
+import {
+  Container,
+  // FormContainer,
+  FormItem,
+  Select,
+  ActionButtons,
+  Button,
+  Form,
+} from './styles'
+import BoxHeader from '../BoxHeader'
+import DialogConfirmPatientAppointment from '../Dialogs/DialogConfirmPatientAppointment'
 
 export type PatientRegistered = {
   id: string
@@ -112,104 +117,103 @@ export const PatientRegister = () => {
   }
 
   return (
-    <Container>
-      <Heading size="md">Registro do paciente</Heading>
-      <FormContainer>
-        <Heading size="sm">Formulário do usuário</Heading>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <FormItem>
-            <label>Nome do paciente</label>
-            <TextInput {...register('name')} />
-            {errors.name && (
-              <Text size={'sm'} color={'gray-400'}>
-                {errors.name.message}
-              </Text>
-            )}
-          </FormItem>
-          <FormItem>
-            <label>CPF do paciente</label>
-            <TextInput {...register('cpf')} maxLength={11} />
-            {errors.cpf && (
-              <Text size={'sm'} color={'gray-400'}>
-                {errors.cpf.message}
-              </Text>
-            )}
-          </FormItem>
-          <FormItem>
-            <label>Idade do paciente</label>
-            <TextInput
-              required
-              number
-              type="number"
-              min={0}
-              max={110}
-              {...register('age')}
-            />
-            {errors.age && (
-              <Text size={'sm'} color={'gray-400'}>
-                {errors.age.message}
-              </Text>
-            )}
-          </FormItem>
-          <FormItem>
-            <label>Sexo</label>
-            <Select {...register('gender')}>
-              {genderArray.map((op) => {
-                return (
-                  <option key={op.label} value={op.value}>
-                    {op.label}
-                  </option>
-                )
-              })}
-            </Select>
-            {errors.gender && (
-              <Text size="sm" color="gray-400">
-                {errors.gender.message}
-              </Text>
-            )}
-          </FormItem>
-          <FormItem>
-            <label>Paciente portador de deficiencia</label>
-            <InputRadio
-              {...register('pcd')}
-              text={pcd ? 'É pcd' : 'Não é pcd'}
-              checked={pcd}
-              onClick={() => setPcd(!pcd)}
-            />
-            {errors.pcd && (
-              <Text size={'sm'} color={'gray-400'}>
-                {errors.pcd.message}
-              </Text>
-            )}
-          </FormItem>
-          <ActionButtons>
-            <Button type="submit">Salvar</Button>
-            <Button onClick={handleClearForm}>Limpar</Button>
-            {isSubmitting && (
-              <Text size="sm" color="gray-400">
-                Salvando...
-              </Text>
-            )}
-            {registerErro && (
-              <Text size="sm" color="error">
-                {registerErro}
-              </Text>
-            )}
-            {registerSuccess && (
-              <Text size="sm" color="success">
-                {registerSuccess}
-              </Text>
-            )}
-          </ActionButtons>
-        </form>
-      </FormContainer>
+    <Container flexDirection="column">
+      <BoxHeader title="Formulário do paciente" />
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <FormItem>
+          <label>Nome do paciente</label>
+          <TextInput {...register('name')} />
+          {errors.name && (
+            <Text size={'sm'} color={'gray-400'}>
+              {errors.name.message}
+            </Text>
+          )}
+        </FormItem>
+        <FormItem>
+          <label>CPF do paciente</label>
+          <TextInput {...register('cpf')} maxLength={11} />
+          {errors.cpf && (
+            <Text size={'sm'} color={'gray-400'}>
+              {errors.cpf.message}
+            </Text>
+          )}
+        </FormItem>
+        <FormItem>
+          <label>Idade do paciente</label>
+          <TextInput
+            required
+            number
+            type="number"
+            min={0}
+            max={110}
+            {...register('age')}
+          />
+          {errors.age && (
+            <Text size={'sm'} color={'gray-400'}>
+              {errors.age.message}
+            </Text>
+          )}
+        </FormItem>
+        <FormItem>
+          <label>Sexo</label>
+          <Select {...register('gender')}>
+            {genderArray.map((op) => {
+              return (
+                <option key={op.label} value={op.value}>
+                  {op.label}
+                </option>
+              )
+            })}
+          </Select>
+          {errors.gender && (
+            <Text size="sm" color="gray-400">
+              {errors.gender.message}
+            </Text>
+          )}
+        </FormItem>
+        <FormItem>
+          <label>Paciente portador de deficiencia</label>
+          <InputRadio
+            {...register('pcd')}
+            text={pcd ? 'É pcd' : 'Não é pcd'}
+            checked={pcd}
+            onClick={() => setPcd(!pcd)}
+          />
+          {errors.pcd && (
+            <Text size={'sm'} color={'gray-400'}>
+              {errors.pcd.message}
+            </Text>
+          )}
+        </FormItem>
+        <ActionButtons>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <Button type="submit">Salvar</Button>
+            </Dialog.Trigger>
 
-      {patientRegistered && (
-        <AppointmentRegister
-          patient={patientRegistered}
-          cancelAppointmentRegister={() => setPatientRegistered(null)}
-        />
-      )}
+            {patientRegistered && (
+              <DialogConfirmPatientAppointment patient={patientRegistered} />
+            )}
+          </Dialog.Root>
+          <Button onClick={handleClearForm}>Limpar</Button>
+
+          {isSubmitting && (
+            <Text size="sm" color="gray-400">
+              Salvando...
+            </Text>
+          )}
+          {registerErro && (
+            <Text size="sm" color="error">
+              {registerErro}
+            </Text>
+          )}
+          {registerSuccess && (
+            <Text size="sm" color="success">
+              {registerSuccess}
+            </Text>
+          )}
+        </ActionButtons>
+      </Form>
     </Container>
   )
 }

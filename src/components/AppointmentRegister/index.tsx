@@ -10,15 +10,17 @@ import { Heading, Text } from '../Typography'
 import { api } from '@/lib/axios'
 import { PatientRegistered } from '../PatientRegister'
 import { useAppointment } from '@/hooks/useAppointment'
+import { Box } from '../ui/Box'
+import * as Dialog from '@radix-ui/react-dialog'
 
 type AppointmentRegisterProps = {
   patient: PatientRegistered
-  cancelAppointmentRegister: () => void
+  // cancelAppointmentRegister: () => void
 }
 
 export const AppointmentRegister = ({
   patient,
-  cancelAppointmentRegister,
+  // cancelAppointmentRegister,
 }: AppointmentRegisterProps) => {
   const { name, age, isPcd, id } = patient
   const isPriority = isPcd || age >= 60
@@ -52,8 +54,8 @@ export const AppointmentRegister = ({
   }
 
   return (
-    <FormContainer>
-      <Heading size="sm">Confirmar consulta para paciente</Heading>
+    <Box flexDirection="column">
+      {/* <Heading size="sm">Confirmar consulta para paciente</Heading> */}
       <PatientInfo>
         <PatientInfoItem>
           <Text>Nome:</Text>
@@ -76,7 +78,14 @@ export const AppointmentRegister = ({
       </PatientInfo>
       <ActionButtons>
         <Button onClick={handleRegisterAppointment}>Confirmar</Button>
-        <Button onClick={cancelAppointmentRegister}>Cancelar</Button>
+        <Dialog.Close asChild>
+          <Button
+          // onClick={cancelAppointmentRegister}
+          >
+            Cancelar
+          </Button>
+        </Dialog.Close>
+
         {registerErro && (
           <Text size="sm" color="error">
             {registerErro}
@@ -89,6 +98,6 @@ export const AppointmentRegister = ({
         )}
       </ActionButtons>
       {/* {output && <Text>{output}</Text>} */}
-    </FormContainer>
+    </Box>
   )
 }
