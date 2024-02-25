@@ -1,28 +1,18 @@
 import { styled } from '../../../stitches.config'
+import { Box } from '../ui/Box'
 
-export const Container = styled('section', {
-  display: 'flex',
-  flexDirection: 'column',
+export const Container = styled(Box, {
   width: '100%',
-  border: '2px solid $cyan500',
-  borderRadius: '$md',
-  padding: '$2',
+  maxWidth: '50%',
+  minWidth: '450px',
+  minHeight: '450px',
+  overflow: 'auto',
 })
 
-export const FormContainer = styled('div', {
+export const Form = styled('form', {
   display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  border: '1px solid $cyan500',
-  borderRadius: '$md',
-  padding: '$2',
-  marginTop: '$2',
-  marginBottom: '$2',
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '$2',
-  },
+  flexWrap: 'wrap',
+  gap: '$4',
 })
 
 export const FormItem = styled('div', {
