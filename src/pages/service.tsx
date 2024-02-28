@@ -1,13 +1,8 @@
 import {
   AppointmentDateHeader,
-  BoxAppointment,
-  BoxCallPainelHeader,
+  BoxAppointmentPainel,
   BoxCallPainelItem,
-  BoxStatus,
-  ButtonStatus,
-  InfoAppointment,
   ServiceContainer,
-  TodayAppointment,
   TodayAppointments,
 } from '@/styles/pages/service'
 import { NextPageWithLayout } from './_app'
@@ -18,11 +13,12 @@ import { useAppointment } from '@/hooks/useAppointment'
 import { api } from '@/lib/axios'
 import { useQuery } from '@tanstack/react-query'
 import { IAppointment, Status } from '@/context/AppointmentContext'
-import { Avatar } from '@/components/ui/Avatar'
-import { faker } from '@faker-js/faker'
-import { CallBell, CheckFat, Heartbeat } from '@phosphor-icons/react'
-import { Box } from '@/components/ui/Box'
+// import { Avatar } from '@/components/ui/Avatar'
+// import { faker } from '@faker-js/faker'
+// import { CallBell, CheckFat, Heartbeat } from '@phosphor-icons/react'
+// import { Box } from '@/components/ui/Box'
 import BoxHeader from '@/components/BoxHeader'
+import TodayAppointmentCard from '@/components/TodayAppointmentCard'
 
 const ServicePage: NextPageWithLayout = () => {
   const { CALLED, INSERVICE, COMPLETED } = Status
@@ -43,6 +39,14 @@ const ServicePage: NextPageWithLayout = () => {
     (appointment) =>
       dayjs(appointment.created_at).format('DD/MM/YYYY') ===
       dayjs().format('DD/MM/YYYY'),
+  )
+
+  const priorityAppointments = todayAppointments?.filter(
+    (appointment) => appointment.isPriority,
+  )
+
+  const normalAppointments = todayAppointments?.filter(
+    (appointment) => !appointment.isPriority,
   )
 
   const calledAppointments = appointmentList?.filter(
@@ -89,78 +93,42 @@ const ServicePage: NextPageWithLayout = () => {
           </Text>
         </AppointmentDateHeader>
         {/* {JSON.stringify(appointments)} */}
-        {appointments ? (
-          appointments.map((appointment) => {
+        {priorityAppointments && priorityAppointments.length > 0 ? (
+          priorityAppointments.map((appointment) => {
             return (
-              <TodayAppointment key={appointment.id}>
-                <span>{dayjs(appointment.created_at).format('hh:mm')}</span>
-                <Box>
-                  <Avatar
-                    src={faker.internet.avatar()}
-                    alt="Avatar do paciente"
-                  />
-
-                  <InfoAppointment>
-                    <Text size="md" color="gray-400">
-                      {appointment.statusAppointment?.description}
-                    </Text>
-                    <Text size="xl">{appointment.patient?.name}</Text>
-                    <Text size="sm" color="gray-400">
-                      {appointment.isPriority
-                        ? 'Atendimento prioritário'
-                        : 'Atendimento normal'}
-                    </Text>
-                  </InfoAppointment>
-                  <BoxStatus flexDirection="column">
-                    <Text size="md" color="gray-400">
-                      Atualizar status do paciente
-                    </Text>
-                    <ButtonStatus
-                      onClick={() => handleCallPatient(appointment)}
-                      color="orange"
-                    >
-                      <Text size="md" color="gray-200">
-                        Chamar Paciente
-                      </Text>
-                      <CallBell size={30} weight="bold" />
-                    </ButtonStatus>
-                    {/* <ButtonStatus onClick={()=>handleStatusButton(0,appointment)} color="orange">
-                      <Text size="md" color="gray-200">
-                        Atender Paciente
-                      </Text>
-                      <ClipboardText size={30} />
-                    </ButtonStatus> */}
-                    <ButtonStatus
-                      onClick={() => handleStartAppointment(appointment)}
-                      color="cyan"
-                      disabled
-                    >
-                      <Text size="md" color="gray-200">
-                        Iniciar consulta
-                      </Text>
-                      <Heartbeat size={30} weight="bold" />
-                    </ButtonStatus>
-                    <ButtonStatus
-                      onClick={() => handleFinishAppointment(appointment)}
-                      color="green"
-                    >
-                      <Text size="md" color="gray-200">
-                        Finalizar consulta
-                      </Text>
-                      <CheckFat size={30} weight="bold" />
-                    </ButtonStatus>
-                  </BoxStatus>
-                </Box>
-              </TodayAppointment>
+              <TodayAppointmentCard
+                key={appointment.id}
+                appointment={appointment}
+                onCallAppointment={handleCallPatient}
+                onStartAppointment={handleStartAppointment}
+                onFinishAppointment={handleFinishAppointment}
+              />
             )
           })
         ) : (
           <Text size="md" color="gray-400">
-            Sem agendamentos para hoje!
+            Sem atendimento prioritário!
+          </Text>
+        )}
+        {normalAppointments && normalAppointments.length > 0 ? (
+          normalAppointments.map((appointment) => {
+            return (
+              <TodayAppointmentCard
+                key={appointment.id}
+                appointment={appointment}
+                onCallAppointment={handleCallPatient}
+                onStartAppointment={handleStartAppointment}
+                onFinishAppointment={handleFinishAppointment}
+              />
+            )
+          })
+        ) : (
+          <Text size="md" color="gray-400">
+            Sem mais consultas!
           </Text>
         )}
       </TodayAppointments>
-      <Box flexDirection="column">
+      <BoxAppointmentPainel flexDirection="column">
         <BoxHeader title="Painel de chamadas" />
         {calledAppointments && calledAppointments.length > 0 ? (
           calledAppointments.map((called) => {
@@ -179,7 +147,7 @@ const ServicePage: NextPageWithLayout = () => {
         ) : (
           <Text color="gray-400">Sem agendamentos</Text>
         )}
-      </Box>
+      </BoxAppointmentPainel>
     </ServiceContainer>
   )
 }
